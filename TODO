@@ -1,11 +1,8 @@
 - make so that when no file argument then ask for file but give when clicking
   tab file suggestions like in real bash
 - use fractional numbers and only at the end round
-- make git repository
-- make pip installable so that there is a bin "zwegat"
 - improve parser (use real library with error reporting?)
-- make real command line tool with help
-- write documentation
+- write source code documentation
 - improve code, with an eye on low hanging performance improvements
-- upload to github
 - improve output if necessary
+- when entering ctrl+d or ctrl+c don't show traceback

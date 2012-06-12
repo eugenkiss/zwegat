@@ -66,24 +66,26 @@ def printDebts(d):
             pass
         elif len(debts) == 1 and debtor in debts:
             amount = debts[debtor]
-            print "%s hat Kosten für sich selbst von %0.2f€" % (debtor, amount)
+            print "%s effectively spent %0.2f" % (debtor, amount)
             print ""
         else:
-            print debtor + " schuldet"
+            print debtor + " owes"
             for creditor, amount in debts.iteritems():
                 if creditor != debtor:
-                    print "  %s %0.2f€" % (creditor, amount)
+                    print "  %s %0.2f" % (creditor, amount)
             if debtor in debts:
                 amount = debts[debtor]
-                print "  und hat Kosten für sich selbst von %0.2f€" % (amount)
+                print "  and effectively spent %0.2f" % (amount)
             print ""
 
-if __name__ == '__main__':
+def main():
     filename = ""
-    if len(sys.argv) <= 1: filename = raw_input("Gib Dateinamen ein: ")
+    if len(sys.argv) <= 1: filename = raw_input("Enter filename: ")
     else: filename = sys.argv[1]
     f = open(filename, 'r').read()
     p = parse(f)
     d = normalizeDebts(getDebts(p))
     printDebts(d)
-    raw_input("Drücke eine Taste...")
+    raw_input("Press Enter...")
+
+if __name__ == '__main__': main()
