@@ -1,0 +1,24 @@
+e; e,p,w;   2.70    // 01.06: Küchenpapier
+w;   p,w;   9.13    // 01.06: Frühstück
+p;   p,w;   5.00    // 01.06: Brötchen
+p; e    ;   1.80    // 01.06: Frischkäse
+p; e,p,w;   1.65    // 01.06: Brot und Milch
+p;   p,w;   8.51    // 01.06: Brötchen, Aufstrich
+e; e,p,w;   8.03    // 04.06: WC-Reiniger, Waschmittel, Tabs
+p; e,p,w;   3.64    // 04.06: Klopapier und Bodenreiniger
+p;   p,w;  11.27    // 04.06: Kochen Hallenbad
+w; e,p,w;   0.99    // 04.06: Salz
+w; e,p,w;  19.87    // 04.06: Putzmittel usw.
+w;   p,w;   5.16    // 04.06: Lebensmittel
+e; e,p,w;  17.89    // 04.06: Lebensmittel und Putzmittel
+e; e,p,w;   5.50    // 04.06: Briefmarken
+e; e,p,w;  95.00    // 04.06: Küche
+p;     w;  40.00    // 07.06: Schulden
+p;     w;  18.41    // 07.06: Flos Geschenk
+e; e,p,w;  10.00    // 07.06: Treppenhaus
+w;   p,w;  21.00    // 07.06: Play-off
+w;   p  ;   2.00    // 07.06: Kaffee
+e; e,p,w;   3.10    // 08.06: Milch und Rohrreiniger
+p; e,p,w;   0.60    // 09.06: Bananen
+p;     w;  30.00    // 09.06: Hochzeit
+p; e,p  ;   1.70    // 09.06: Weichspüler
