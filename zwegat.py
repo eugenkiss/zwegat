@@ -3,22 +3,27 @@
 import re
 import sys
 from itertools import combinations
+from decimal import *
+from pyparsing import Word, Literal, LineEnd, ZeroOrMore, OneOrMore, Regex, \
+                      Group, ParseException, ParseSyntaxException, Combine, \
+                      restOfLine, alphas, alphanums, delimitedList, nums
+
+comma       = Literal(',').suppress().setName('comma')
+semicolon   = Literal(';').suppress().setName('semicolon')
+decimal     = Combine(Word(nums).setName('number') + '.' + Word(nums)).setName('decimal') | \
+              Word(nums).setName('decimal')
+decimal.setParseAction(lambda s,l,t: [Decimal(t[0]).normalize()])
+comment     = Literal('//') + restOfLine
+name        = Word(alphas + "_", alphanums + "_").setName('name')
+names       = Group(delimitedList(name)).setName('names')
+entry       = name - semicolon - names - semicolon - decimal - LineEnd().suppress()
+entry.setParseAction(lambda s,l,t: [(t[0],set(t[1]),t[2])])
+parser      = ZeroOrMore(entry | LineEnd().suppress())
+parser.setWhitespaceChars(r' \t\f')
+parser.ignore(comment)
 
 def parse(s):
-    # remove comments
-    s = re.sub(r'//.*\n',r'\n', s)
-    # remove whitespace
-    s = re.sub(r'[ \t\f]','', s)
-    # remove blank lines
-    s = re.sub(r'^\n','', s).strip()
-    ret = []
-    # TODO: Teste Format. Falls falsch, Fehlermeldung
-    for l in s.splitlines():
-        [creditor, debtors, amount] = l.split(';')
-        debtors = set(debtors.split(','))
-        amount = float(amount)
-        ret.append((creditor, debtors, amount))
-    return ret
+    return parser.parseString(s, parseAll=True)
 
 def getPersons(p):
     ret = set()
@@ -32,7 +37,7 @@ def getDebtsFor(p, debtor):
     for person in getPersons(p): ret[person] = 0
     for (creditor, debtors, amount) in p:
         if debtor in debtors:
-            ret[creditor] += amount / len(debtors)
+            ret[creditor] += amount / Decimal(len(debtors))
     # remove superflous information
     ret = {k: ret[k] for k in ret.keys() if ret[k] != 0}
     return ret
@@ -80,12 +85,33 @@ def printDebts(d):
 
 def main():
     filename = ""
-    if len(sys.argv) <= 1: filename = raw_input("Enter filename: ")
-    else: filename = sys.argv[1]
-    f = open(filename, 'r').read()
-    p = parse(f)
+    if len(sys.argv) <= 1:
+        filename = raw_input("Enter filename: ")
+    else:
+        filename = sys.argv[1]
+
+    try:
+        f = open(filename, 'r').read()
+    except IOError:
+        print 'Cannot open', filename
+        sys.exit(-1)
+
+    try:
+        p = parse(f)
+    except ParseException, err:
+        print err.line
+        print " "*(err.column-1) + "^"
+        print err
+        sys.exit(-1)
+    except ParseSyntaxException, err:
+        print err.line
+        print " "*(err.column-1) + "^"
+        print err
+        sys.exit(-1)
+
     d = normalizeDebts(getDebts(p))
     printDebts(d)
+
     raw_input("Press Enter...")
 
 if __name__ == '__main__': main()

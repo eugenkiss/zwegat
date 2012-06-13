@@ -1,7 +1,5 @@
 - make so that when no file argument then ask for file but give when clicking
   tab file suggestions like in real bash
-- use fractional numbers and only at the end round
-- improve parser (use real library with error reporting?)
 - write source code documentation
 - improve code, with an eye on low hanging performance improvements
 - improve output if necessary

@@ -19,6 +19,10 @@ e; e,p,w;  10.00    // 07.06: Treppenhaus
 w;   p,w;  21.00    // 07.06: Play-off
 w;   p  ;   2.00    // 07.06: Kaffee
 e; e,p,w;   3.10    // 08.06: Milch und Rohrreiniger
+
 p; e,p,w;   0.60    // 09.06: Bananen
 p;     w;  30.00    // 09.06: Hochzeit
 p; e,p  ;   1.70    // 09.06: Weichspüler
+//sdfsd
+
+
