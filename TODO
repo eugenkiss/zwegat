@@ -4,3 +4,4 @@
 - improve code, with an eye on low hanging performance improvements
 - improve output if necessary
 - when entering ctrl+d or ctrl+c don't show traceback
+- zwegat-gui + installabe for windoes (exe?)

@@ -13,7 +13,7 @@ semicolon   = Literal(';').suppress().setName('semicolon')
 decimal     = Combine(Word(nums).setName('number') + '.' + Word(nums)).setName('decimal') | \
               Word(nums).setName('decimal')
 decimal.setParseAction(lambda s,l,t: [Decimal(t[0]).normalize()])
-comment     = Literal('//') + restOfLine
+comment     = Literal('#') + restOfLine
 name        = Word(alphas + "_", alphanums + "_").setName('name')
 names       = Group(delimitedList(name)).setName('names')
 entry       = name - semicolon - names - semicolon - decimal - LineEnd().suppress()

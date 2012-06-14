@@ -13,7 +13,7 @@ def test1():
 
 def test2():
     p = parse("""
-        e; e,p,w;   2.70    // 01.06: Kuchenpapier
+        e; e,p,w;   2.70    # 01.06: Kuchenpapier
         """)
     assert p.asList() == [('e', set(['e','p','w']), Decimal('2.7'))]
     assert getPersons(p) == set(['e','p','w'])
@@ -27,8 +27,8 @@ def test2():
 
 def test3():
     p = parse("""
-        e; e,p,w;   2.70    // 01.06: Kuchenpapier
-        p; e,p,w;   0.90    // 01.06: Duft
+        e; e,p,w;   2.70    # 01.06: Kuchenpapier
+        p; e,p,w;   0.90    # 01.06: Duft
         """)
     assert p.asList() == [('e', set(['e','p','w']), Decimal('2.7')),
                           ('p', set(['e','p','w']), Decimal('0.9'))]
