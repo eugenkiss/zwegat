@@ -86,7 +86,8 @@ def printDebts(d):
 def main():
     filename = ""
     if len(sys.argv) <= 1:
-        filename = raw_input("Enter filename: ")
+        print "Please enter a filename as a command line argument."
+        sys.exit(0)
     else:
         filename = sys.argv[1]
 
@@ -111,7 +112,5 @@ def main():
 
     d = normalizeDebts(getDebts(p))
     printDebts(d)
-
-    raw_input("Press Enter...")
 
 if __name__ == '__main__': main()

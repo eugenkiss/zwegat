@@ -1,7 +1,4 @@
-- make so that when no file argument then ask for file but give when clicking
-  tab file suggestions like in real bash
 - write source code documentation
 - improve code, with an eye on low hanging performance improvements
 - improve output if necessary
 - when entering ctrl+d or ctrl+c don't show traceback
-- zwegat-gui + installabe for windoes (exe?)
