@@ -19,8 +19,7 @@ names       = Group(delimitedList(name)).setName('names')
 entry       = name - semicolon - names - semicolon - decimal - LineEnd().suppress()
 entry.setParseAction(lambda s,l,t: [(t[0],set(t[1]),t[2])])
 parser      = ZeroOrMore(entry | LineEnd().suppress())
-parser.setWhitespaceChars(r' \t\f')
-parser.ignore(comment)
+parser.setWhitespaceChars(r' \t\f').ignore(comment)
 
 def parse(s):
     return parser.parseString(s, parseAll=True)
@@ -67,22 +66,13 @@ def normalizeDebts(d):
 def printDebts(d):
     print ""
     for debtor, debts in d.iteritems():
-        if len(debts) == 0:
+        if len(debts) == 0 or len(debts) == 1 and debtor in debts:
             pass
-        elif len(debts) == 1 and debtor in debts:
-            amount = debts[debtor]
-            print "%s spent %0.2f" % (debtor, amount)
-            print ""
         else:
-            spent = 0
             print debtor + " owes"
             for creditor, amount in debts.iteritems():
                 if creditor != debtor:
-                    spent += amount
                     print "  %s %0.2f" % (creditor, amount)
-            if debtor in debts:
-                spent += debts[debtor]
-            print "  and spent %0.2f" % (spent)
             print ""
 
 def main():

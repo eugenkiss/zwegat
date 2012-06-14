@@ -56,19 +56,14 @@ it is:
 
     eugen owes
       polina 0.90
-      and spent 1.80
 
     wadim owes
       eugen 0.90
-      and spent 5.46
 
     polina owes
       wadim 4.57
-      and spent 4.57
 
-As you can see there are no redundant debts. The amount that is listed
-as "spent" is the amount of money that the person "owes himself" plus
-all the other debts of that person. A currency symbol is deliberately
+As you can see there are no redundant debts. A currency symbol is deliberately
 left out.
 
 
