@@ -71,16 +71,18 @@ def printDebts(d):
             pass
         elif len(debts) == 1 and debtor in debts:
             amount = debts[debtor]
-            print "%s effectively spent %0.2f" % (debtor, amount)
+            print "%s spent %0.2f" % (debtor, amount)
             print ""
         else:
+            spent = 0
             print debtor + " owes"
             for creditor, amount in debts.iteritems():
                 if creditor != debtor:
+                    spent += amount
                     print "  %s %0.2f" % (creditor, amount)
             if debtor in debts:
-                amount = debts[debtor]
-                print "  and effectively spent %0.2f" % (amount)
+                spent += debts[debtor]
+            print "  and spent %0.2f" % (spent)
             print ""
 
 def main():

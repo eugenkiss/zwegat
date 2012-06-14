@@ -25,9 +25,8 @@ folder of your choice and execute it with `python zwegat.py` or just
 Usage
 -----
 
-Either provide a filename *x* as a command line argument like so `zwegat
-x` or enter `zwegat` without any arguments on the command line. In that
-case the program will prompt you for a file name.
+Provide a filename *x* as a command line argument like so `zwegat
+x`.
 
 
 File Format
@@ -36,15 +35,15 @@ File Format
 The following exemplary segment could be the content of a correctly
 formatted file:
 
-    eugen;  eugen,polina,wadim; 2.70  // 01.06: Plutonium
-    wadim;  polina,wadim;       9.13  // 02.06: Cocaine
-    polina; eugen;              1.80  // 04.06: Shark fin
+    eugen;  eugen,polina,wadim; 2.70  # 01.06: Plutonium
+    wadim;  polina,wadim;       9.13  # 02.06: Cocaine
+    polina; eugen;              1.80  # 04.06: Shark fin
 
 As you can see every line constitutes an entry. Each entry consists of
 three `;`-separated values. The first one is the person that bought the
 stuff. The second value is a list of persons for whom the stuff was
 bought and the third value is the amount of money that the buyer (the
-first value) spent. Everything after `//` is a comment.
+first value) spent. Everything after `#` is a comment.
 
 See also the file `example.txt`.
 
@@ -57,18 +56,29 @@ it is:
 
     eugen owes
       polina 0.90
-      and effectively spent 0.90
+      and spent 1.80
 
     wadim owes
       eugen 0.90
-      and effectively spent 4.57
+      and spent 5.46
 
     polina owes
       wadim 4.57
+      and spent 4.57
 
-As you can see there are no redundant debts. The number that is listed
-as "effectively spent" is the amount of money that the person "owes
-himself". A currency symbol is deliberately left out.
+As you can see there are no redundant debts. The amount that is listed
+as "spent" is the amount of money that the person "owes himself" plus
+all the other debts of that person. A currency symbol is deliberately
+left out.
+
+
+Features
+--------
+
+- Simplicity
+- No redundant debts
+- High precision arithmetic with python's Decimal library
+- Okay error messages for syntax errors thanks to pyparsing
 
 
 Miscellaneous
